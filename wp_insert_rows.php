@@ -3,7 +3,8 @@
 	/**
      * A method for inserting multiple rows into the specified table
      * 
-     *
+     *  Usage Example: 
+	 *
      *  $insert_arrays = array();
      *  foreach($assets as $asset) {
      *
