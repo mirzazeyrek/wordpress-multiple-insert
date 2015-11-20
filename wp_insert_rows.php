@@ -17,6 +17,7 @@
      *  }
      *
      *  wp_insert_rows($insert_arrays);
+	 *
      *
      * @param array $row_arrays
      * @return false|int

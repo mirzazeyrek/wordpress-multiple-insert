@@ -18,4 +18,5 @@ a method for inserting multiple rows with in a safer and faster way
        wp_insert_rows($insert_arrays);
  ```
  
+ 
  source : http://stackoverflow.com/a/12374838/1194797
