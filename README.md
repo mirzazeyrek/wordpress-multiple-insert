@@ -1,5 +1,5 @@
 # wp-multiple-insert
-a method for inserting multiple rows with in a safer and faster way
+a method for inserting multiple rows in a safer and faster way
 
 # usage example
 ```
