@@ -21,15 +21,15 @@
 	 *
      *
      * @param array $row_arrays
+	 * @param string $wp_table_name
      * @return false|int
      *
      * @author	Ugur Mirza ZEYREK
      * @source http://stackoverflow.com/a/12374838/1194797
      */
 	 
-    function wp_insert_rows($row_arrays = array(), $wp_table_name = null) {
+    function wp_insert_rows($row_arrays = array(), $wp_table_name) {
         global $wpdb;
-        global $wp_table_name;
         $wp_table_name = esc_sql($wp_table_name);
         // Setup arrays for Actual Values, and Placeholders
         $values = array();
