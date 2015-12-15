@@ -5,13 +5,13 @@ a method for inserting multiple rows in a safer and faster way
 ```
        $insert_arrays = array();
        foreach($assets as $asset) {
-     
+	   $time = current_time( 'mysql' );
        $insert_arrays[] = array(
        'type' => "multiple_row_insert",
        'status' => 1,
        'name'=>$asset,
        'added_date' => current_time( 'mysql' ),
-       'last_update' => current_time( 'mysql' ));
+       'last_update' => $time);
      
        }
      

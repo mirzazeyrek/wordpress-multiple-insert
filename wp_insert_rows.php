@@ -2,18 +2,18 @@
  
 	/**
      * A method for inserting multiple rows into the specified table
-     * 
+     *  
      *  Usage Example: 
 	 *
      *  $insert_arrays = array();
      *  foreach($assets as $asset) {
-     *
+     *  $time = current_time( 'mysql' );
      *  $insert_arrays[] = array(
      *  'type' => "multiple_row_insert",
      *  'status' => 1,
      *  'name'=>$asset,
-     *  'added_date' => current_time( 'mysql' ),
-     *  'last_update' => current_time( 'mysql' ));
+     *  'added_date' => $time,
+     *  'last_update' => $time);
      *
      *  }
      *
@@ -58,13 +58,13 @@
                             if(isset($place_holders[$count])) {
                             $place_holders[$count] .= ", '%d'";
                             } else {
-                            $place_holders[$count] .= "( '%d'";
+                            $place_holders[$count] = "( '%d'";
                             }
                         } else {
                             if(isset($place_holders[$count])) {
                             $place_holders[$count] .= ", '%s'";
                             } else {
-                            $place_holders[$count] .= "( '%s'";
+                            $place_holders[$count] = "( '%s'";
                             }
                         }
                     }
