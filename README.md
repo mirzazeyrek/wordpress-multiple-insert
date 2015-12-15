@@ -10,7 +10,7 @@ a method for inserting multiple rows in a safer and faster way
        'type' => "multiple_row_insert",
        'status' => 1,
        'name'=>$asset,
-       'added_date' => current_time( 'mysql' ),
+       'added_date' => $time,
        'last_update' => $time);
      
        }
