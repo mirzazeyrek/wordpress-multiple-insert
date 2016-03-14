@@ -1,4 +1,4 @@
-# wp-multiple-insert
+# wordpress-multiple-insert
 a method for inserting multiple rows in a safer and faster way
 
 # usage example
