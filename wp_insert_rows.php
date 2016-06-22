@@ -17,7 +17,7 @@
 	*
 	*  }
 	*
-	*  wp_insert_rows($insert_arrays);
+	*  wp_insert_rows($insert_arrays, $wp_table_name);
 	*
 	*
 	* @param array $row_arrays
