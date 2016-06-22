@@ -2,6 +2,7 @@
  
 	/**
 	*  A method for inserting multiple rows into the specified table
+	*  Updated to include the ability to Update existing rows by primary key
 	*  
 	*  Usage Example: 
 	*
@@ -17,18 +18,21 @@
 	*
 	*  }
 	*
-	*  wp_insert_rows($insert_arrays);
+	*  wp_insert_rows($insert_arrays, $wpdb->tablename, true, "column_name_of_Primary_key");
 	*
 	*
 	* @param array $row_arrays
 	* @param string $wp_table_name
+	* @param boolean $update
+	* @param string $prikeyname
 	* @return false|int
 	*
 	* @author	Ugur Mirza ZEYREK
+	* @contributor Travis Grenell
 	* @source http://stackoverflow.com/a/12374838/1194797
 	*/
 	 
-	function wp_insert_rows($row_arrays = array(), $wp_table_name) {
+function wp_insert_rows($row_arrays = array(), $wp_table_name, $update, $prikeyname) {
 	global $wpdb;
 	$wp_table_name = esc_sql($wp_table_name);
 	// Setup arrays for Actual Values, and Placeholders
@@ -37,7 +41,7 @@
 	$query = "";
 	$query_columns = "";
 	
-	$query .= "INSERT INTO {$wp_table_name} (";
+	$query .= "INSERT INTO `{$wp_table_name}` (";
 	
 	        foreach($row_arrays as $count => $row_array)
 	        {
@@ -46,7 +50,7 @@
 	
 	                if($count == 0) {
 	                    if($query_columns) {
-	                    $query_columns .= ",".$key."";
+	                    $query_columns .= ", ".$key."";
 	                    } else {
 	                    $query_columns .= "".$key."";
 	                    }
@@ -76,10 +80,28 @@
 	
 	$query .= implode(', ', $place_holders);
 	
-	if($wpdb->query($wpdb->prepare($query, $values))){
-	    return true;
-	} else {
-	    return false;
-	}
+  if ($update)	
+  {
+    $update=" ON DUPLICATE KEY UPDATE $prikeyname=VALUES( $prikeyname ),";
+    $cnt=0;
+    foreach($row_arrays[0] as $key => $value)
+    {
+      if($cnt==0) {
+        $update .= "$key=VALUES($key)";
+        $cnt=1;
+      }
+      else {
+        $update .= ", $key=VALUES($key)";
+      }
+    }
+    $query .= $update;
+  }
+  $sql=$wpdb->prepare($query, $values);
+
+  if($wpdb->query($sql)){
+    return true;
+  } else {
+    return false;
+  }
 	
 	}
