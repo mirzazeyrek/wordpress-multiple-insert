@@ -27,7 +27,7 @@ A Wordpress method for inserting multiple rows in a safer and faster way
 	   
        }
      
-       wp_insert_rows($insert_arrays);
+       wp_insert_rows($insert_arrays,$wp_table_name);
  ```
  
  
