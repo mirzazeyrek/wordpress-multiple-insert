@@ -33,7 +33,7 @@
 	* @source http://stackoverflow.com/a/12374838/1194797
 	*/
 	 
-function wp_insert_rows($row_arrays = array(), $wp_table_name, $update=false, $primary_key) {
+function wp_insert_rows($row_arrays = array(), $wp_table_name, $update=false, $primary_key=null) {
 	global $wpdb;
 	$wp_table_name = esc_sql($wp_table_name);
 	// Setup arrays for Actual Values, and Placeholders
