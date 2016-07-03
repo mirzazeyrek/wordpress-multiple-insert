@@ -18,13 +18,14 @@
 	*
 	*  }
 	*
+	*  wp_insert_rows($insert_arrays, $wpdb->tablename);
 	*  wp_insert_rows($insert_arrays, $wpdb->tablename, true, "column_name_of_Primary_key");
 	*
 	*
 	* @param array $row_arrays
 	* @param string $wp_table_name
 	* @param boolean $update
-	* @param string $prikeyname
+	* @param string $primary_key
 	* @return false|int
 	*
 	* @author	Ugur Mirza ZEYREK
@@ -32,7 +33,7 @@
 	* @source http://stackoverflow.com/a/12374838/1194797
 	*/
 	 
-function wp_insert_rows($row_arrays = array(), $wp_table_name, $update, $prikeyname) {
+function wp_insert_rows($row_arrays = array(), $wp_table_name, $update=false, $primary_key) {
 	global $wpdb;
 	$wp_table_name = esc_sql($wp_table_name);
 	// Setup arrays for Actual Values, and Placeholders
@@ -82,7 +83,7 @@ function wp_insert_rows($row_arrays = array(), $wp_table_name, $update, $prikeyn
 	
   if ($update)	
   {
-    $update=" ON DUPLICATE KEY UPDATE $prikeyname=VALUES( $prikeyname ),";
+    $update=" ON DUPLICATE KEY UPDATE $primary_key=VALUES( $primary_key ),";
     $cnt=0;
     foreach($row_arrays[0] as $key => $value)
     {
@@ -96,12 +97,11 @@ function wp_insert_rows($row_arrays = array(), $wp_table_name, $update, $prikeyn
     }
     $query .= $update;
   }
+  
   $sql=$wpdb->prepare($query, $values);
-
   if($wpdb->query($sql)){
     return true;
   } else {
     return false;
   }
-	
-	}
+}
