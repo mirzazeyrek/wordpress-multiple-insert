@@ -4,7 +4,7 @@
 	*  A method for inserting multiple rows into the specified table
 	*  Updated to include the ability to Update existing rows by primary key
 	*  
-	*  Usage Example: 
+	*  Usage Example for insert: 
 	*
 	*  $insert_arrays = array();
 	*  foreach($assets as $asset) {
@@ -18,8 +18,12 @@
 	*
 	*  }
 	*
+	*
 	*  wp_insert_rows($insert_arrays, $wpdb->tablename);
-	*  wp_insert_rows($insert_arrays, $wpdb->tablename, true, "column_name_of_Primary_key");
+	*
+	*  Usage Example for update:
+	*
+	*  wp_insert_rows($insert_arrays, $wpdb->tablename, true, "primary_column");
 	*
 	*
 	* @param array $row_arrays

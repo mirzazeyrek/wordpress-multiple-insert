@@ -1,7 +1,7 @@
 # Wordpress Multiple Insert
 A Wordpress method for inserting multiple rows in a safer and faster way
 
-# usage example
+# usage example for insert:
 ```
        $insert_arrays = array();
        foreach($assets as $asset) {
@@ -27,8 +27,13 @@ A Wordpress method for inserting multiple rows in a safer and faster way
 	   
        }
      
-       wp_insert_rows($insert_arrays);
+       wp_insert_rows($insert_arrays,$wp_table_name);
  ```
  
+# usage example for update:
+
+ ```
+		wp_insert_rows($insert_arrays, $wpdb->tablename, true, "primary_column");
+ ```
  
  source : http://stackoverflow.com/a/12374838/1194797
