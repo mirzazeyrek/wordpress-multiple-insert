@@ -94,8 +94,7 @@ function wp_insert_rows($row_arrays = array(), $wp_table_name, $update=false, $p
       if($cnt==0) {
         $update .= "$key=VALUES($key)";
         $cnt=1;
-      }
-      else {
+      } else {
         $update .= ", $key=VALUES($key)";
       }
     }
