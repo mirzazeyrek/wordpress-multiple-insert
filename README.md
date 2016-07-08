@@ -1,5 +1,5 @@
 # Wordpress Multiple Insert
-A Wordpress method for inserting multiple rows in a safer and faster way
+A Wordpress method for inserting or updating multiple rows in a safer and faster way
 
 # usage example for insert:
 ```
