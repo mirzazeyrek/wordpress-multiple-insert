@@ -60,7 +60,9 @@ function wp_insert_rows($row_arrays = array(), $wp_table_name, $update = false, 
 			$values[] = $value;
 			
 			$symbol = "%s";
-			if (is_numeric($value)) {
+			if (is_null($value)) {
+				$symbol = "NULL";
+			} elseif (is_numeric($value)) {
 				if (is_float($value)) {
 					$symbol = "%f";
 				} else {
